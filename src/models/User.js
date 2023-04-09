@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     // 'User' é o nome da model
-    const User = sequelize.define('User', {
+    const user = sequelize.define('User', {
       id: DataTypes.INTEGER,
       displayName: DataTypes.STRING,
       email: DataTypes.STRING,
@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'users',
         // underscored transforma o displayName que está em camelCase em snakeize
         underscored: true,
+        // timestamps na model, quando não uso as colunas createdAt e updatedAt
+        timestamps: false,
     });
   
-    return User;
+    return user;
   };
