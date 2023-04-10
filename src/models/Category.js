@@ -1,13 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
     // 'Category' é o nome da model
-    const category = sequelize.define('Category', {
+    const Category = sequelize.define('Category', {
       id: DataTypes.INTEGER,
       name: DataTypes.STRING,
     },{
-        tableName: 'categories',
+        tableName: 'categories',// nome da tabela que foi definida em migration
         // timestamps na model, quando não uso as colunas createdAt e updatedAt
         timestamps: false,
     });
+
+    Category.associate = (models) => {
+      Category.belongsToMany(models.PostCategory, {
+          foreignKey: 'category_id',
+          as: 'postCategory',
+      })
+  }
   
-    return category;
+    return Category;
   };
