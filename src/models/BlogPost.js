@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     // 'BlogPost' é o nome da model
     const BlogPost = sequelize.define('BlogPost', {
-      id: DataTypes.INTEGER,
+      id: { type: DataTypes.INTEGER, primayKey: true },
       title: DataTypes.STRING,
       content: DataTypes.STRING,
       userId: DataTypes.INTEGER,
@@ -19,11 +19,6 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id',
             as: 'user',
         })
-        BlogPost.belongsToMany(models.PostCategory, {
-            foreignKey: 'post_id',
-            as: 'postCategory',
-        })
     }
-
     return BlogPost;
   };

@@ -10,15 +10,20 @@ module.exports = (sequelize, DataTypes) => {
         // timestamps na model, quando não uso as colunas createdAt e updatedAt
         timestamps: false,
     });
+
     PostCategory.associate = (models) => {
-        PostCategory.belongsToMany(models.BlogPost, {
-            foreignKey: 'post_id',
-            as: 'blogPost',
-        })
-        PostCategory.belongsToMany(models.Category, {
-            foreignKey: 'category_id',
-            as: 'category',
-        })
-    }
+        models.Category.belongsToMany(models.BlogPost, {
+          as: 'category',
+          through: PostCategory,
+          foreignKey: 'categoryId', // se refere ao id de Category na tabela de `posts_categories`
+          otherKey: 'postId', // se refere a outra chave de `posts_categories`
+        });
+        models.BlogPost.belongsToMany(models.Category, {
+          as: 'blogPost',
+          through: PostCategory,
+          foreignKey: 'postId',
+          otherKey: 'categoryId',
+        });
+      };
     return PostCategory;
   };
