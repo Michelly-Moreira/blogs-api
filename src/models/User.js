@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     // 'User' é o nome da model
-    const user = sequelize.define('User', {
+    const User = sequelize.define('User', {
       id: DataTypes.INTEGER,
       displayName: DataTypes.STRING,
       email: DataTypes.STRING,
@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         // timestamps na model, quando não uso as colunas createdAt e updatedAt
         timestamps: false,
     });
-  
-    return user;
-  };
+    User.associate = (models) => {
+      User.hasMany(models.BlogPost, {
+          foreignKey: 'user_id',
+          as: 'blogPost',
+      })
+  }
+      return User;
+    }
