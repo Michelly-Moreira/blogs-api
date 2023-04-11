@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     // 'Category' é o nome da model
     const Category = sequelize.define('Category', {
-      id: { type: DataTypes.INTEGER, primayKey: true },
+      id: { type: DataTypes.INTEGER, primaryKey: true },
       name: DataTypes.STRING,
     },{
         tableName: 'categories',// nome da tabela que foi definida em migration

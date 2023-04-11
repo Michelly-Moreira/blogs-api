@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     // 'BlogPost' é o nome da model
     const BlogPost = sequelize.define('BlogPost', {
-      id: { type: DataTypes.INTEGER, primayKey: true },
+      id: { type: DataTypes.INTEGER, primaryKey: true },
       title: DataTypes.STRING,
       content: DataTypes.STRING,
       userId: DataTypes.INTEGER,
