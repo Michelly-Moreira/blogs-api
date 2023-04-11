@@ -6,4 +6,4 @@ const loginValidation = (req, res, next) => {
     return next();
   };
   
-  module.exports = loginValidation;
+  module.exports = { loginValidation };
