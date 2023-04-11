@@ -1,8 +1,8 @@
 const userRouter = require('express').Router(); 
-const { tokenValidation } = require('../middleware/token.validation');
-// const userController = require('../controllers/user.controller');
+const userController = require('../controllers/user.controller');
+const { userValidation } = require('../middleware/user.validation');
 
-userRouter.use(tokenValidation);
-userRouter.post('/');
+userRouter.use(userValidation);
+userRouter.post('/', userController.createUser);
 
 module.exports = userRouter;

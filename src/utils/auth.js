@@ -28,9 +28,15 @@ const generateToken = (payload) => {
     return isValid;
   };
 
-  //
+  // leitura do conteúdo (decode)
+  const decodeToken = (token) => {
+    if (!token) throw httpErrGenerator(401, 'Token not found');
+    const decoded = jwt.decode(token, secretKey);
+    return decoded;
+  };
 
 module.exports = {
   generateToken,
   validateToken,
+  decodeToken,
 };
