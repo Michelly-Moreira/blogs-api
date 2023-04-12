@@ -8,7 +8,7 @@ const httpErrGenerator = (status, message) => ({
 const create = async (displayName, email, password, image) => {
 const user = await User.findOne({
         where: { email, password },
-        attributes: { excludes: ['password'] },
+        attributes: { exclude: ['password'] },
       });
 // se o usuário já estiver cadastrado
 if (user) throw httpErrGenerator(409, 'User already registered');
@@ -25,7 +25,7 @@ return token;
 
 const getAll = async () => {
   const allUsers = await User.findAll({
-  attributes: { excludes: ['password'] },
+  attributes: { exclude: ['password'] },
 });
 return allUsers;
 };
