@@ -6,10 +6,10 @@ const createUser = async (req, res) => {
 try {
     const { displayName, email, password, image } = req.body;
     const newUser = await userService.create(displayName, email, password, image);
-    console.log(newUser);
+    // console.log(newUser);
     return res.status(201).json({ token: newUser });
 } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     if (error.status) {
         return res.status(error.status).json({ message: error.message });
     }

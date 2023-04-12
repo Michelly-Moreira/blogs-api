@@ -19,7 +19,7 @@ const newUser = await User.create({ displayName, email, password, image });
 // geração do token
 const token = generateToken(newUser.dataValues);
 // retornando o token para o endpoint
-console.log(token);
+// console.log(token);
 return token;
 };
 
