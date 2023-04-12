@@ -23,6 +23,14 @@ console.log(token);
 return token;
 };
 
+const getAll = async () => {
+  const allUsers = await User.findAll({
+  attributes: { excludes: ['password'] },
+});
+return allUsers;
+};
+
 module.exports = {
     create,
+    getAll,
 };

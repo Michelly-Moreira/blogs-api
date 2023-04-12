@@ -15,6 +15,12 @@ try {
     }
 };
 
+const getAll = async (_req, res) => {
+    const getAllUsers = await userService.getAll();
+    return res.status(200).json(getAllUsers);
+};
+
 module.exports = {
 createUser,
+getAll,
 };
