@@ -1,5 +1,5 @@
 const { postService } = require('../services');
-const { decodeToken } = require('../utils/auth');
+// const { decodeToken } = require('../utils/auth');
 
 const createPost = async (req, res) => {
     const { title, content, categoryIds } = req.body;
