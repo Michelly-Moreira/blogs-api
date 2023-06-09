@@ -7,7 +7,7 @@ const httpErrGenerator = (status, message) => ({
 const secretKey = process.env.JWT_SECRET;
 
 const configJWT = {
-    expiresIn: '1d', // expira em 1 minuto
+    expiresIn: '1d', // expira em 1 dia
     algorithm: 'HS256',
   };
   // gerando o token
